@@ -1,9 +1,11 @@
 {
-    "name": "Gameplay",
+    "name": "Main_Script",
     "rootNamespace": "",
     "references": [
+        "GUID:f814dd3b54ede634195b6311a8dce4c1",
         "GUID:d95afeb03c0102f4c81d9a37a38c866c",
-        "GUID:a7f67cb4011e8eb40b5220f27a8fed77"
+        "GUID:a7f67cb4011e8eb40b5220f27a8fed77",
+        "GUID:a452180b64b422e4e87448c68e651458"
     ],
     "includePlatforms": [
         "Editor"
