@@ -2,13 +2,35 @@
     "name": "Gameplay",
     "rootNamespace": "",
     "references": [
-        "GUID:d95afeb03c0102f4c81d9a37a38c866c",
-        "GUID:a7f67cb4011e8eb40b5220f27a8fed77"
+        "GUID:a7f67cb4011e8eb40b5220f27a8fed77",
+        "GUID:a452180b64b422e4e87448c68e651458"
     ],
-    "includePlatforms": [
-        "Editor"
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Android",
+        "EmbeddedLinux",
+        "iOS",
+        "Kepler",
+        "LinuxStandalone64",
+        "CloudRendering",
+        "macOSStandalone",
+        "Switch2",
+        "Switch",
+        "PS4",
+        "PS5",
+        "QNX",
+        "tvOS",
+        "WSA",
+        "VisionOS",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64",
+        "WindowsStandalone32Server",
+        "WindowsStandalone64Server",
+        "GameCoreXboxOne",
+        "XboxOne",
+        "GameCoreScarlett"
     ],
-    "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,
     "precompiledReferences": [],

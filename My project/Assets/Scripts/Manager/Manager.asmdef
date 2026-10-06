@@ -1,3 +1,43 @@
 {
-	"name": "Manager"
+    "name": "Manager",
+    "rootNamespace": "",
+    "references": [
+        "GUID:a452180b64b422e4e87448c68e651458",
+        "GUID:f814dd3b54ede634195b6311a8dce4c1",
+        "GUID:a7f67cb4011e8eb40b5220f27a8fed77"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [
+        "Android",
+        "Editor",
+        "EmbeddedLinux",
+        "iOS",
+        "Kepler",
+        "LinuxStandalone64",
+        "CloudRendering",
+        "macOSStandalone",
+        "Switch2",
+        "Switch",
+        "PS4",
+        "PS5",
+        "QNX",
+        "tvOS",
+        "WSA",
+        "VisionOS",
+        "WebGL",
+        "WindowsStandalone32",
+        "WindowsStandalone64",
+        "WindowsStandalone32Server",
+        "WindowsStandalone64Server",
+        "GameCoreXboxOne",
+        "XboxOne",
+        "GameCoreScarlett"
+    ],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }
