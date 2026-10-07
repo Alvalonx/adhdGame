@@ -1,20 +1,39 @@
+using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
+using TMPro;
 
 public class UnitControler : MonoBehaviour
 {
     [SerializeField]
-    private GameObject[] unitPrefabs;
-    private GameObject unit;
+    private GameObject distractorPrefab, stimulusPrefab;
+    private PCGController pcgController;
     private GameObject spawnedUnit;
     private float offset = 0.1f;
+    private bool isPlaying = false;
+    [SerializeField] private TextMeshProUGUI TextMeshProUGUI;
 
-    
+    private void Start()
+    {
+        pcgController = GetComponent<PCGController>();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Keyboard.current.spaceKey.wasPressedThisFrame)
         {
-            ObjectSpawn();
+            Play();
+        }
+    }
+
+    public void Play()
+    {
+        isPlaying = !isPlaying;
+        if (isPlaying)
+        {
+            StartCoroutine(SpawnLoop());
+            TextMeshProUGUI.text = "Playing";
         }
     }
 
@@ -25,8 +44,8 @@ public class UnitControler : MonoBehaviour
         float targetX = 0f;
         float targetY = 0f;
         int randomizeDirection = Random.Range(0, 4);
-        int randomizeUnit = Random.Range(0, unitPrefabs.Length);
-        unit = unitPrefabs[randomizeUnit];
+        bool spawn = Random.value < pcgController.currentDistractorRatio;
+        GameObject spawnedPrefab = spawn ? distractorPrefab : stimulusPrefab;
         switch (randomizeDirection)
         {
             case 0:
@@ -55,10 +74,21 @@ public class UnitControler : MonoBehaviour
                 break;
         }
         Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, randomY, 10f));
-        spawnedUnit = Instantiate(unit, spawnPosition, Quaternion.identity);
+        spawnedUnit = Instantiate(spawnedPrefab, spawnPosition, Quaternion.identity);
         if (spawnedUnit.TryGetComponent(out UnitMove unitMover))
         {
             unitMover.Move(Camera.main.ViewportToWorldPoint(new Vector3(targetX, targetY, 10f)));
+            unitMover.telemetryLogger = this.GetComponent<TelemetryLogger>();
+            unitMover.Speed = pcgController.currentObjectSpeed;
         }
     }
+    IEnumerator SpawnLoop()
+    {
+        while (isPlaying)
+        {
+            ObjectSpawn();
+            yield return new WaitForSeconds(pcgController.currentSpawnInterval);
+        }
+    }
+
 }

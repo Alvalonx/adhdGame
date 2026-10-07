@@ -107,7 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45462b6880541d24aba76ecf07fa23f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Gameplay::UnitMove
-  duration: 5
+  Speed: 5
+  objectData: {fileID: 11400000, guid: 1c9778f9686a9dc45afcc2a53c125318, type: 2}
+  telemetryLogger: {fileID: 0}
 --- !u!61 &1581633387507745265
 BoxCollider2D:
   m_ObjectHideFlags: 0
