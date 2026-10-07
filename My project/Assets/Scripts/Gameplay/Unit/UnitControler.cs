@@ -5,7 +5,10 @@ public class UnitControler : MonoBehaviour
     [SerializeField]
     private GameObject[] unitPrefabs;
     private GameObject unit;
+    private GameObject spawnedUnit;
     private float offset = 0.1f;
+
+    
 
     private void Update()
     {
@@ -52,7 +55,7 @@ public class UnitControler : MonoBehaviour
                 break;
         }
         Vector3 spawnPosition = Camera.main.ViewportToWorldPoint(new Vector3(randomX, randomY, 10f));
-        GameObject spawnedUnit = Instantiate(unit, spawnPosition, Quaternion.identity);
+        spawnedUnit = Instantiate(unit, spawnPosition, Quaternion.identity);
         if (spawnedUnit.TryGetComponent(out UnitMove unitMover))
         {
             unitMover.Move(Camera.main.ViewportToWorldPoint(new Vector3(targetX, targetY, 10f)));
